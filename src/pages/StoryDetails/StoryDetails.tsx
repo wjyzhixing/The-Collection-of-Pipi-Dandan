@@ -1,6 +1,7 @@
 // The exported code uses Tailwind CSS. Install Tailwind CSS in your dev environment to ensure all styles work.
 import React, { useState } from "react";
-import { Button, Tag } from "antd";
+import { useParams } from "react-router-dom";
+import { Button, Tag, Modal, message } from "antd";
 import {
   HeartOutlined,
   HeartFilled,
@@ -10,10 +11,26 @@ import {
   ClockCircleOutlined,
   EyeOutlined,
   ArrowLeftOutlined,
+  CopyOutlined,
+  QrcodeOutlined,
 } from "@ant-design/icons";
+import { QRCodeCanvas } from "qrcode.react";
+import { stories } from "../../article/story.js";
+import ShareModal from "../../components/ShareModal/ShareModal";
+
 const StoryDetails: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const story = stories[parseInt(id || "1")];
+  console.log(id)
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(156);
+  const [isShareModalVisible, setIsShareModalVisible] = useState(false);
+  const currentUrl = window.location.href;
+  const handleCopyUrl = () => {
+    navigator.clipboard.writeText(currentUrl).then(() => {
+      message.success("链接已复制到剪贴板");
+    });
+  };
   const handleLike = () => {
     if (isLiked) {
       setLikeCount((prev) => prev - 1);
@@ -22,6 +39,10 @@ const StoryDetails: React.FC = () => {
     }
     setIsLiked(!isLiked);
   };
+
+  if (!story) {
+    return <div>故事不存在</div>;
+  }
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 顶部图片背景 */}
@@ -46,15 +67,15 @@ const StoryDetails: React.FC = () => {
           {/* 文章头部信息 */}
           <div className="mb-8">
             <Tag color="purple" className="mb-4">
-              实验室
+              LOVE
             </Tag>
             <h1 className="text-3xl font-bold text-gray-800 mb-4">
-              量子纠缠与咖啡
+              {story.title}
             </h1>
             <div className="flex items-center space-x-6 text-gray-500 text-sm">
               <div className="flex items-center">
                 <UserOutlined className="mr-2" />
-                <span>张雨晨</span>
+                <span>波浪小子</span>
               </div>
               <div className="flex items-center">
                 <ClockCircleOutlined className="mr-2" />
@@ -62,23 +83,23 @@ const StoryDetails: React.FC = () => {
               </div>
               <div className="flex items-center">
                 <EyeOutlined className="mr-2" />
-                <span>2,341 阅读</span>
+                <span>1000 阅读</span>
               </div>
             </div>
           </div>
           {/* 文章内容 */}
           <div className="prose max-w-none">
             <p className="text-gray-700 leading-relaxed mb-6">
-              那天下午，实验室里弥漫着咖啡的香气。我正在调试量子纠缠实验的设备，而你在一旁认真地记录着数据。阳光透过窗户洒在光学平台上，折射出绚丽的光芒。
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              量子纠缠是个神奇的现象，就像我们之间的默契一样。当我专注于调整激光器的时候，你总是能在恰到好处的时候递来一杯温热的咖啡。那些咖啡因和你温暖的笑容，让漫长的实验过程变得格外美好。
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              有时候，我会想，也许爱情就像量子纠缠一样。两个粒子一旦纠缠，无论相隔多远，都会瞬间影响彼此的状态。就像我们，即使各自忙碌于不同的实验台，心却始终紧密相连。
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              记得那天，我们的实验取得了重要突破。数据采集系统显示出完美的纠缠态，而窗外的夕阳正好映照在你微笑的脸庞上。那一刻，科研的喜悦和内心的悸动交织在一起，成为了最美好的回忆。
+              {story.sections.map((section, index) => (
+                <React.Fragment key={index}>
+                  {section.title && (
+                    <h2 className="text-2xl font-semibold text-gray-800 mb-4 mt-4">
+                      {section.title}
+                    </h2>
+                  )}
+                  {section.content}
+                </React.Fragment>
+              ))}
             </p>
           </div>
           {/* 互动区域 */}
@@ -97,9 +118,18 @@ const StoryDetails: React.FC = () => {
               >
                 {likeCount} 喜欢
               </Button>
-              <Button icon={<ShareAltOutlined />} className="!rounded-button">
+              <Button
+                icon={<ShareAltOutlined />}
+                className="!rounded-button"
+                onClick={() => setIsShareModalVisible(true)}
+              >
                 分享
               </Button>
+              <ShareModal
+                isVisible={isShareModalVisible}
+                onClose={() => setIsShareModalVisible(false)}
+                url={currentUrl}
+              />
             </div>
             <Button icon={<BookOutlined />} className="!rounded-button">
               收藏

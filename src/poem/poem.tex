@@ -1,0 +1,300 @@
+\documentclass[12pt, a4paper, oneside]{book}
+
+% 中文支持
+\usepackage{ctex}
+
+% 页边距调整
+\usepackage[a4paper, margin=1in]{geometry}
+
+% 字体与段落设置
+\usepackage{microtype}
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0em}
+
+% 章节标题美化
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\Huge}
+  {\filleft\MakeUppercase{\chaptertitlename}~\thechapter}
+  {1ex}
+  {\titlerule\vspace{1ex}\filright}
+  [\vspace{1ex}\titlerule]
+
+% 页面样式
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\fancyfoot[C]{}
+
+% 引入必要的宏包
+\usepackage{pifont}  % 提供特殊符号
+
+% 调整正文的脚注标号格式（上标）
+\renewcommand{\thefootnote}{\ding{192}} % 让脚注编号为①
+
+% 自定义脚注格式
+\makeatletter
+\renewcommand\@makefntext[1]{%
+    \parindent 1em\noindent
+    \raisebox{0ex}{\ding{192}}~#1 % 让脚注中的①稍微下降一点，使其和文字居中
+}
+\makeatother
+
+% 设置整行脚注横线
+\renewcommand{\footnoterule}{\vspace{1em} \hrule width \textwidth \vspace{1em}} 
+
+% 诗歌对齐和美化
+\newenvironment{poem}
+  {\vspace{1em}\begin{flushleft}\itshape}
+  {\end{flushleft}\vspace{1em}}
+
+% 图片支持
+\usepackage{graphicx}
+\usepackage{eso-pic}
+
+\begin{document}
+
+% 封面页
+\begin{titlepage}
+    \newgeometry{margin=0.5in} % 调整页边距，给封面更多空间
+
+    % 背景全页图片
+    \AddToShipoutPictureBG*{%
+        \AtPageLowerLeft{\includegraphics[width=\paperwidth,height=\paperheight]{images/background.jpg}}
+    }
+
+    \vspace*{2cm} % 调整顶部间距
+    \noindent
+    \begin{minipage}{0.4\textwidth}
+        \raggedleft % 左对齐书名和作者信息
+        {\Huge \CJKfamily{kai} \textbf{浮波螺梦}}\\[2em]
+        {\Large 波浪小子 / 田螺姑娘}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/weather.png}\\[1em]
+        \includegraphics[width=\textwidth]{images/cover_instead.png}
+    \end{minipage}
+
+    \vfill % 让底部图片向下靠
+
+\end{titlepage}
+
+
+
+% \maketitle
+\thispagestyle{empty}
+
+% 前言
+\chapter*{前言}
+\addcontentsline{toc}{chapter}{前言}
+《浮波螺梦》是波浪小子和田螺姑娘共同创造的诗词集。以所问所答，爱心中所爱。
+
+每段文字，都饱含着深深爱意，是我们共同编织的美好记忆。这些故事通过飞花令诗集的形式编排，蕴含着许多轻盈如花的情感，也如同我们间的对句——一字一句，都是我们的心意。
+
+从诗句中，感受到每一分每一秒的爱意，未来的岁月里，依然如此美好、如此深刻。我也希望，读到这些诗词的每个人，能够体会到那份纯粹的浪漫与温柔。
+% 目录
+\tableofcontents
+\newpage
+
+% 第一章
+\chapter{第一章}
+\begin{poem}
+坐高楼看烟花，\\
+别人的景我的家。\\
+\end{poem}
+\begin{poem}
+冬月明烟花洒，\\
+月老牵丝系我俩。\\
+\end{poem}
+
+% 第二章
+\chapter{第二章}
+\begin{poem}
+新岁启红线搭，\\
+喜笑颜开春芽发。\\
+\end{poem}
+\begin{poem}
+旧事除小手拉，\\
+护这佳人守此花。\\
+\end{poem}
+
+% 第三章
+\chapter{第三章}
+\begin{poem}
+鞭炮响年兽呐，\\
+甲辰已矣乙巳啦。\\
+\end{poem}
+\begin{poem}
+福字贴烟花落，\\
+龙年消逝蛇年咯。\\
+\end{poem}
+
+% 第四章
+\chapter{第四章}
+\begin{poem}
+好事近烦恼破，\\
+眼波流转手紧握。\\
+\end{poem}
+\begin{poem}
+幸运访烟涛过，\\
+快乐共享成巨擘。\\
+\end{poem}
+
+% 第五章
+\chapter{第五章}
+\begin{poem}
+王侯众我自乐，\\
+温情脉脉日不落。\\
+\end{poem}
+\begin{poem}
+君主饮余独坐，\\
+心境悠悠惟开阔。\\
+\end{poem}
+
+% 第六章
+\chapter{第六章}
+\begin{poem}
+度长夜尽挥墨，\\
+琼楼玉宇不寂寞。\\
+\end{poem}
+\begin{poem}
+书卷排小说做，\\
+小城大爱贴贴过。\\
+\end{poem}
+
+% 第七章
+\chapter{第七章}
+\begin{poem}
+莫回首重争流，\\
+灵犀不朽爱不休。\\
+\end{poem}
+\begin{poem}
+琴常在乐悠悠，\\
+此志不改心不丢。\\
+\end{poem}
+
+% 第八章
+\chapter{第八章}
+\begin{poem}
+世纷繁漫步走，\\
+岁月绵绵乐忘忧。\\
+\end{poem}
+\begin{poem}
+事琐碎相与游，\\
+携手多多渡神洲。\\
+\end{poem}
+
+% 第九章
+\chapter{第九章}
+\begin{poem}
+文采长诗流淌，\\
+才思敏捷无可挡。\\
+\end{poem}
+\begin{poem}
+温柔拂遍山岗，\\
+枕藉沉溺似新房。\\
+\end{poem}
+
+% 第十章
+\chapter{第十章}
+\begin{poem}
+星辰朗姻缘绑，\\
+红豆青丝念新郎。\\
+\end{poem}
+\begin{poem}
+日月光思绪放，\\
+小花独宠爱姑娘。\\
+\end{poem}
+
+% 第十一章
+\chapter{第十一章}
+\begin{poem}
+晚风轻拂挽玉琴，\\
+心念佳人欣澎今。\\
+漫山阔海皆爱意，\\
+绕梁三日岂惟音。\\
+\end{poem}
+
+% 第十二章
+\chapter{第十二章}
+\begin{poem}
+南北望途连京，\\
+天雷地火盼九津。\\
+\end{poem}
+\begin{poem}
+东西顾爱满行，\\
+风和日丽愿欢欣。\\
+\end{poem}
+
+% 第十三章
+\chapter{第十三章}
+\begin{poem}
+琴瑟鸣墨香涨，\\
+从此孤芳不自赏。\\
+\end{poem}
+\begin{poem}
+笙箫起笔纸扬，\\
+相伴春色到秋光。\\
+\end{poem}
+
+% 第十四章
+\chapter{第十四章}
+\begin{poem}
+星河璀璨夜观宇，\\
+万家灯火爆竹竞。\\
+花好月圆共芳馨，\\
+才子佳人心自倾。\\
+\end{poem}
+
+% 第十五章
+\chapter{第十五章}
+\begin{poem}
+暮色将尽未尽。 \\
+\end{poem}
+\begin{poem}
+爱意正浓益浓。\\
+\end{poem}
+
+% 第十六章
+\chapter{第十六章}
+\begin{poem}
+暮色氤氲待君归，\\
+归来楼阁携手谈。\\
+谈笑盈盈双目对，\\
+对此佳人还念谁\footnote{又做曰：对茶当歌不愿睡}。\\
+\end{poem}
+
+% 第十七章
+\chapter{第十七章}
+\begin{poem}
+夜幕照我怀，\\
+勤勉运自来。\\
+\end{poem}
+\begin{poem}
+归来吻碧玉，\\
+心花正盛开。\\
+\end{poem}
+
+% 第十八章
+\chapter{第十八章}
+\begin{poem}
+枝桠行行站，\\
+孩提声声漫。\\
+\end{poem}
+\begin{poem}
+鲜花朵朵开，\\
+太阳融融瞰！\\
+\end{poem}
+
+% 后记
+\chapter*{后记}
+\addcontentsline{toc}{chapter}{后记}
+每一首诗，都是我与我女朋友共同创造的爱情篇章。
+
+这本诗集不仅是对我们的爱情的记录，它更像是我们对未来的承诺，愿我们能在未来的日子里，继续并肩前行，共同编织属于我们的故事，直到永远。
+\end{document}
