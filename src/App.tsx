@@ -1,23 +1,60 @@
 // The exported code uses Tailwind CSS. Install Tailwind CSS in your dev environment to ensure all styles work.
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 import {
   HeartOutlined,
   ShareAltOutlined,
   BookOutlined,
+  SoundOutlined, SoundFilled 
 } from "@ant-design/icons";
 import ShareModal from "./components/ShareModal/ShareModal";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { stories } from "./article/story.js";
 import { poems } from "./poem/poem.js";
+import { useAudio } from './contexts/AudioContext';
+import backgroundMusic from './assets/pipidandan.mp3';
+import { cover } from './utils';
+import 杰克与露西 from './assets/杰克与露西.png'
+import 太阳与月亮 from './assets/太阳与月亮.png'
+import 奇幻旋律 from './assets/奇幻旋律.png'
 
 const App: React.FC = () => {
   const [isShareModalVisible, setIsShareModalVisible] = useState(false);
   const [currentShareUrl, setCurrentShareUrl] = useState("");
+  const { audio, isPlaying, togglePlay } = useAudio();
+
+  // useEffect(() => {
+  //   const handleClick = () => {
+  //     if (!isPlaying) {
+  //       togglePlay();
+  //     }
+  //   };
+
+  //   document.addEventListener('click', handleClick, { once: true });
+  //   return () => {
+  //     document.removeEventListener('click', handleClick);
+  //   };
+  // }, [isPlaying, togglePlay]);
+
+  const handleMusicToggle = (e: React.MouseEvent) => {
+    e.stopPropagation(); // 阻止事件冒泡
+    togglePlay();
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <button
+        onClick={handleMusicToggle}
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:bg-white/90 transition-all"
+      >
+        {isPlaying ? (
+          <SoundFilled className="text-xl text-purple-600" />
+        ) : (
+          <SoundOutlined className="text-xl text-gray-600" />
+        )}
+      </button>
       <Header currentPage="home" />
       {/* Hero区域 */}
       <div className="pt-16">
@@ -25,7 +62,9 @@ const App: React.FC = () => {
           className="relative h-[500px] bg-cover bg-center"
           style={{
             backgroundImage:
-              "url(https://readdy.ai/api/search-image?query=A romantic and dreamy scene with soft pastel colors, featuring a modern minimalist study room with books and laptop, natural sunlight streaming through large windows, creating a peaceful and inspiring atmosphere&width=1440&height=500&orientation=landscape&flag=1a3d78dc734f565a5df8285070a222de)",
+              // `url(${cover})`
+              "url(./images/杰克与露西.jpg)"
+
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-white/90 to-transparent">
@@ -86,7 +125,7 @@ const App: React.FC = () => {
                     icon={<ShareAltOutlined />}
                     className="!rounded-button"
                     onClick={(e) => {
-                      e.stopPropagation();
+                      e.preventDefault();
                       setCurrentShareUrl(window.location.origin + `/stories/${index}`);
                       setIsShareModalVisible(true);
                     }}

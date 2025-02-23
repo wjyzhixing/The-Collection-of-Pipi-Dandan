@@ -4,9 +4,12 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import { router } from './router'
 import { RouterProvider } from 'react-router-dom'
+import { AudioProvider } from './contexts/AudioContext';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AudioProvider>
+      <RouterProvider router={router} />
+    </AudioProvider>
   </StrictMode>,
 )

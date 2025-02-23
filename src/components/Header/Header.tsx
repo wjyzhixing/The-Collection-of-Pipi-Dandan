@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input, message } from "antd";
 import { Link } from "react-router-dom";
-import { SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined, MenuOutlined } from "@ant-design/icons";
 
 interface HeaderProps {
   currentPage: "home" | "stories" | "poems";
@@ -9,6 +9,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ currentPage }) => {
   const [searchValue, setSearchValue] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleSearch = () => {
     message.info("搜索功能开发中...");
@@ -45,18 +46,51 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
             </Link>
           </div>
         </div>
-        {/* <div className="flex items-center space-x-4">
-          <div className="relative">
-            <Input
-              prefix={<SearchOutlined className="text-gray-400" />}
-              placeholder="搜索文章..."
-              className="rounded-full border-gray-200 w-48"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              onPressEnter={handleSearch}
-            />
-          </div>
-        </div> */}
+
+        {/* 移动端菜单按钮 */}
+        <button
+          className="md:hidden p-2 text-gray-600 hover:text-purple-600"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <MenuOutlined className="text-xl" />
+        </button>
+      </div>
+
+      {/* 移动端菜单 */}
+      <div
+        className={`md:hidden bg-white border-t transition-all duration-300 ${
+          isMenuOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        }`}
+      >
+        <div className="px-4 py-2 flex flex-col space-y-4">
+          <Link
+            to="/"
+            className={`py-2 ${
+              currentPage === "home" ? "text-purple-600" : "text-gray-600"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            首页
+          </Link>
+          <Link
+            to="/stories"
+            className={`py-2 ${
+              currentPage === "stories" ? "text-purple-600" : "text-gray-600"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            故事集
+          </Link>
+          <Link
+            to="/poems"
+            className={`py-2 ${
+              currentPage === "poems" ? "text-purple-600" : "text-gray-600"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            诗歌集
+          </Link>
+        </div>
       </div>
     </nav>
   );

@@ -68,7 +68,13 @@ const PoemDetails: React.FC = () => {
       <Button
         icon={<ArrowLeftOutlined />}
         className="absolute top-8 left-8 bg-white/80 backdrop-blur-sm hover:bg-white/90 !rounded-button"
-        onClick={() => navigate(-1)}
+        onClick={() => {
+          if(window.history.state?.key){
+            window.history.back();
+          } else {
+            window.location.href = "/";
+          }
+        }}
       >
         返回
       </Button>

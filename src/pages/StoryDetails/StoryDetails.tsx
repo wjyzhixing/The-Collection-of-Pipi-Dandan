@@ -14,7 +14,6 @@ import {
   CopyOutlined,
   QrcodeOutlined,
 } from "@ant-design/icons";
-import { QRCodeCanvas } from "qrcode.react";
 import { stories } from "../../article/story.js";
 import ShareModal from "../../components/ShareModal/ShareModal";
 
@@ -58,7 +57,13 @@ const StoryDetails: React.FC = () => {
       <Button
         icon={<ArrowLeftOutlined />}
         className="absolute top-8 left-8 bg-white/80 backdrop-blur-sm hover:bg-white/90 !rounded-button"
-        onClick={() => window.history.back()}
+        onClick={() => {
+          if(window.history.state?.key){
+            window.history.back();
+          } else {
+            window.location.href = "/";
+          }
+        }}
       >
         返回
       </Button>
