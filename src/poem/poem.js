@@ -189,6 +189,79 @@ export const poems = {
           content: ["鲜花朵朵开", "太阳融融瞰"]
         }
       ]
+    },
+    {
+      chapter: 19,
+      poems: [
+        {
+          content: ["时间长长爱满满"]
+        },
+        {
+          content: ["幽径深深恒看看"],
+          footnote: "又做曰：交融深深美翻翻（嘿嘿）"
+        }
+      ]
+    },
+    {
+      chapter: 20,
+      poems: [
+        {
+          content: ["辛勤耕耘盼星夜相逢"]
+        },
+        {
+          content: ["乘风破浪享朝夕互通"]
+        }
+      ]
+    },
+    {
+      chapter: 21,
+      poems: [
+        {
+          content: [
+            "Sun bright like a torchlight",
+            "Softly glow and smoothly shine",
+            "Wandering like a sloth everytime",
+            "Such happiness no one can deny",
+            "",
+            "阳光似火炬明亮",
+            "柔和光滑闪烁光",
+            "行如树懒四方荡",
+            "幸福如此谁相抗"
+          ]
+        }
+      ]
+    },
+    {
+      chapter: 22,
+      poems: [
+        {
+          content: ["斜月照人心", "薄雾也怀情", "街灯盏盏明", "北风伴我行"]
+        },
+        {
+          content: ["疾风云遮月", "骤雨缓停歇", "姣姣相思夜", "柔柔乘风贴"],
+          footnote: "又做曰：柔柔乘风携（嘻嘻）"
+        }
+      ]
+    },
+    {
+      chapter: 23,
+      poems: [
+        {
+          content: ["兴起城墙徒步", "沉醉不知归路", "兴尽晚回家", "月浮才到住处", "何故何故", "美景不胜丰富"],
+          footnote: "又做曰：梦中仍可回溯（hihi！）"
+        }
+      ]
+    },
+    {
+      chapter: 24,
+      poems: [
+        {
+          content: ["千帆历尽", "享万世千秋", "野鹤闲云", "醉细水长流"]
+        },
+        {
+          content: ["枕藉果壳", "瑷抚拭夜昼", "相濡并进", "腾万里方遒"]
+        }
+      ]
     }
   ]
 }

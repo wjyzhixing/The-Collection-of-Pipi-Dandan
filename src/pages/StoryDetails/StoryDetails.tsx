@@ -84,7 +84,7 @@ const StoryDetails: React.FC = () => {
               </div>
               <div className="flex items-center">
                 <ClockCircleOutlined className="mr-2" />
-                <span>2025-02-20</span>
+                <span>2025-03-12</span>
               </div>
               <div className="flex items-center">
                 <EyeOutlined className="mr-2" />

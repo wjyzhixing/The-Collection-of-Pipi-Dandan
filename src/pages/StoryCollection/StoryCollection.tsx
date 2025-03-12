@@ -27,7 +27,7 @@ const StoryCollection: React.FC = () => {
     title: story.title,
     content: story.sections[0].content,
     category: "故事",
-    date: "2025-02-20",
+    date: "2025-03-12",
     author: "波浪小子",
     views: 1000,
     likes: 100
