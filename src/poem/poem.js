@@ -279,5 +279,39 @@ export const poems = {
         }
       ]
     },
+    {
+      chapter: 27,
+      poems: [
+        {
+          content: ["油菜花满地", "彗星耀天宇"]
+        },
+        {
+          content: ["众星宿整齐", "运自天庭予"],
+          footnote: "改曰：星宿众整齐（嘻嘻）"
+        }
+      ]
+    },
+    {
+      chapter: 28,
+      poems: [
+        {
+          content: ["雄略问几许", "滔滔永无际"]
+        },
+        {
+          content: ["柔情何处取？", "悠悠怀中喜"]
+        }
+      ]
+    },
+    {
+      chapter: 29,
+      poems: [
+        {
+          content: ["虾兵蟹将入肚来", "玉盘珍馐金不换"]
+        },
+        {
+          content: ["待到梦中筵席去", "席卷天庭载酒回"]
+        }
+      ]
+    }
   ]
 }
