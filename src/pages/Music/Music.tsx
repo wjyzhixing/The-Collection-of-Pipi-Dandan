@@ -73,54 +73,54 @@ const Music: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Header currentPage="music" />
       <div className="pt-16 max-w-7xl mx-auto px-4 py-8">
-        <div className="space-y-6 p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
           {musicList.map((music) => (
             <div
               key={music.id}
-              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1"
+              className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:bg-gradient-to-r hover:from-pink-100 hover:via-purple-50 hover:to-pink-50 border border-pink-100"
             >
-              <div className="p-6 flex items-center space-x-6">
-                <div className="relative w-24 h-24 flex-shrink-0">
+              <div className="p-6 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 backdrop-blur-sm bg-white/30">
+                <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
                   <img
                     src={music.cover}
                     alt={music.title}
-                    className="w-full h-full object-cover rounded-lg"
+                    className="w-full h-full object-cover rounded-xl shadow-md"
                   />
                   <Button
                     type="text"
-                    className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 text-white rounded-lg transition-colors"
+                    className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-xl transition-colors"
                     onClick={() => handlePlayMusic(music)}
                     icon={
                       isPlaying && currentMusicId === music.id ? (
-                        <PauseCircleOutlined className="text-3xl" />
+                        <PauseCircleOutlined className="text-4xl" />
                       ) : (
-                        <PlayCircleOutlined className="text-3xl" />
+                        <PlayCircleOutlined className="text-4xl" />
                       )
                     }
                   />
                 </div>
-                <div className="flex-grow">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xl font-semibold text-gray-800">
+                <div className="flex-grow text-center md:text-left">
+                  <div className="flex flex-col md:flex-row items-center md:items-start md:justify-between mb-3">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2 md:mb-0">
                       {music.title}
                     </h3>
-                    <Tag color="purple">音乐</Tag>
+                    <Tag color="pink" className="text-sm">浪漫音乐</Tag>
                   </div>
-                  <p className="text-sm text-gray-500 mb-4">{music.artist}</p>
-                  <div className="flex items-center justify-between">
+                  <p className="text-base text-pink-600 mb-4">{music.artist}</p>
+                  <div className="flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0">
                     <span className="text-sm text-gray-500">{music.duration}</span>
-                    <div className="flex space-x-2">
+                    <div className="flex space-x-3">
                       <Button
                         type="text"
-                        icon={<HeartOutlined />}
-                        className="!rounded-button"
+                        icon={<HeartOutlined className="text-pink-500" />}
+                        className="!rounded-full hover:bg-pink-50 border-pink-200"
                       >
                         喜欢
                       </Button>
                       <Button
                         type="text"
-                        icon={<ShareAltOutlined />}
-                        className="!rounded-button"
+                        icon={<ShareAltOutlined className="text-purple-500" />}
+                        className="!rounded-full hover:bg-purple-50 border-purple-200"
                       >
                         分享
                       </Button>
@@ -135,9 +135,9 @@ const Music: React.FC = () => {
           <Pagination
             current={currentPage}
             total={musicList.length}
-            pageSize={10}
+            pageSize={6}
             onChange={(page) => setCurrentPage(page)}
-            className="!rounded-button"
+            className="!rounded-full"
           />
         </div>
       </div>
