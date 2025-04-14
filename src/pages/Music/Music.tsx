@@ -30,6 +30,14 @@ const musicList: MusicItem[] = [
     artist: "波浪小子",
     source: "/media/甜甜的.mp3"
   },
+  {
+    id: 3,
+    title: "么么",
+    cover: "/images/奇幻旋律.png",
+    duration: "1:36",
+    artist: "波浪小子",
+    source: "/media/么么.mp3"
+  },
 ];
 
 const Music: React.FC = () => {
@@ -65,7 +73,7 @@ const Music: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Header currentPage="music" />
       <div className="pt-16 max-w-7xl mx-auto px-4 py-8">
-        <div className="space-y-6">
+        <div className="space-y-6 p-6">
           {musicList.map((music) => (
             <div
               key={music.id}

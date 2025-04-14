@@ -41,7 +41,7 @@ const StoryCollection: React.FC = () => {
       {/* 主要内容区 */}
       <div className="pt-16 max-w-7xl mx-auto px-4 py-8">
         {/* 故事列表 */}
-        <div className="space-y-6">
+        <div className="space-y-6 p-6">
           {currentStoryList.map((story) => (
             <Link
               key={story.id}
