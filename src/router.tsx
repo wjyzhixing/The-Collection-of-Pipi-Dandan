@@ -4,6 +4,7 @@ import StoryCollection from "./pages/StoryCollection/StoryCollection";
 import Poem from "./pages/Poem/Poem";
 import StoryDetails from "./pages/StoryDetails/StoryDetails";
 import PoemDetails from "./pages/PoemDetails/PoemDetails";
+import Music from "./pages/Music/Music";
 
 export const router = createBrowserRouter([
   {
@@ -25,5 +26,9 @@ export const router = createBrowserRouter([
   {
     path: "/poems/:id",
     element: <PoemDetails />,
+  },
+  {
+    path: "/music",
+    element: <Music />,
   },
 ]);

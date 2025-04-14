@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { SearchOutlined, MenuOutlined } from "@ant-design/icons";
 
 interface HeaderProps {
-  currentPage: "home" | "stories" | "poems";
+  currentPage: "home" | "stories" | "poems" | "music";
 }
 
 const Header: React.FC<HeaderProps> = ({ currentPage }) => {
@@ -43,6 +43,12 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
               className={`!rounded-button ${currentPage === "poems" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"}`}
             >
               诗歌集
+            </Link>
+            <Link
+              to="/music"
+              className={`!rounded-button ${currentPage === "music" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"}`}
+            >
+              音乐集
             </Link>
           </div>
         </div>
@@ -89,6 +95,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
             onClick={() => setIsMenuOpen(false)}
           >
             诗歌集
+          </Link>
+          <Link
+            to="/music"
+            className={`py-2 ${
+              currentPage === "music" ? "text-purple-600" : "text-gray-600"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            音乐集
           </Link>
         </div>
       </div>

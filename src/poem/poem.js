@@ -312,6 +312,80 @@ export const poems = {
           content: ["待到梦中筵席去", "席卷天庭载酒回"]
         }
       ]
-    }
+    },
+    {
+      chapter: 30,
+      poems: [
+        {
+          content: ["吾家甜卿性常温", "揽腕果壳共香氛", "柔情相守软心性", "精筑璞玉羡乾坤"]
+        }
+      ]
+    },
+    {
+      chapter: 31,
+      poems: [
+        {
+          content: ["郁郁葱葱遇于丛"]
+        },
+        {
+          content: ["林林总总临仙踪"]
+        }
+      ]
+    },
+    {
+      chapter: 32,
+      poems: [
+        {
+          content: ["匆匆忙忙从众盲"]
+        },
+        {
+          content: ["欢欢喜喜奂焕嬉"]
+        }
+      ]
+    },
+    {
+      chapter: 33,
+      poems: [
+        {
+          content: ["滴答滴答滴滴答"]
+        },
+        {
+          content: ["咕嘎咕嘎咕咕嘎"]
+        }
+      ]
+    },
+    {
+      chapter: 34,
+      poems: [
+        {
+          content: ["缠缠绵绵婵婉眠"]
+        },
+        {
+          content: ["黏黏糊糊年月呼"]
+        }
+      ]
+    },
+    {
+      chapter: 35,
+      poems: [
+        {
+          content: ["仰天望日森如海", "低眉浅笑思君来"]
+        },
+        {
+          content: ["茂丛交映难蔽日", "万丈光芒入心怀"]
+        }
+      ]
+    },
+    {
+      chapter: 36,
+      poems: [
+        {
+          content: ["享满园春光", "观沧浪人潮"]
+        },
+        {
+          content: ["览林中美景", "逊润玉微毫"]
+        }
+      ]
+    },
   ]
 }
