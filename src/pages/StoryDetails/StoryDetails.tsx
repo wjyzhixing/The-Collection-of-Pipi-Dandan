@@ -134,6 +134,7 @@ const StoryDetails: React.FC = () => {
                 isVisible={isShareModalVisible}
                 onClose={() => setIsShareModalVisible(false)}
                 url={currentUrl}
+                title={"文章"}
               />
             </div>
             <Button icon={<BookOutlined />} className="!rounded-button">

@@ -7,9 +7,10 @@ interface ShareModalProps {
   isVisible: boolean;
   onClose: () => void;
   url: string;
+  title: string;
 }
 
-const ShareModal: React.FC<ShareModalProps> = ({ isVisible, onClose, url }) => {
+const ShareModal: React.FC<ShareModalProps> = ({ isVisible, onClose, url, title }) => {
   const handleCopyUrl = () => {
     navigator.clipboard.writeText(url).then(() => {
       message.success("链接已复制到剪贴板");
@@ -21,7 +22,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ isVisible, onClose, url }) => {
       title={
         <div className="flex items-center gap-2">
           <ShareAltOutlined />
-          <span>分享文章</span>
+          <span>分享{title}</span>
         </div>
       }
       open={isVisible}

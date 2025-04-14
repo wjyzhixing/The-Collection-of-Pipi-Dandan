@@ -135,6 +135,7 @@ const PoemDetails: React.FC = () => {
                 isVisible={isShareModalVisible}
                 onClose={() => setIsShareModalVisible(false)}
                 url={currentUrl}
+                title={"诗歌"}
               />
             </div>
             <Button icon={<BookOutlined />} className="!rounded-button">
