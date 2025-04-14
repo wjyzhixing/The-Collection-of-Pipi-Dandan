@@ -48,7 +48,14 @@ const musicList: MusicItem[] = [
     artist: "波浪小子",
     source: "/media/老鼠爱大米.mp3"
   },
-  
+  {
+    id: 5,
+    title: "我乐意",
+    cover: "/images/奇幻旋律.png",
+    duration: "1:25",
+    artist: "波浪小子",
+    source: "/media/我乐意.mp3"
+  },
 ];
 
 const Music: React.FC = () => {
