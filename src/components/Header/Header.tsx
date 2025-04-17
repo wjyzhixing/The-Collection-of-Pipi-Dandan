@@ -71,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
       {/* 移动端菜单 */}
       <div
         className={`md:hidden bg-white border-t transition-all duration-300 ${
-          isMenuOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0 overflow-hidden" // 可能需要调整 max-h
+          isMenuOpen ? "max-h-70 opacity-100" : "max-h-0 opacity-0 overflow-hidden" // 可能需要调整 max-h
         }`}
       >
         <div className="px-4 py-2 flex flex-col space-y-4">
