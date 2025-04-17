@@ -5,6 +5,7 @@ import Poem from "./pages/Poem/Poem";
 import StoryDetails from "./pages/StoryDetails/StoryDetails";
 import PoemDetails from "./pages/PoemDetails/PoemDetails";
 import Music from "./pages/Music/Music";
+import Gallery from "./pages/Gallery/Gallery";
 
 export const router = createBrowserRouter([
   {
@@ -30,5 +31,9 @@ export const router = createBrowserRouter([
   {
     path: "/music",
     element: <Music />,
+  },
+  {
+    path: "/gallery",
+    element: <Gallery />,
   },
 ]);
