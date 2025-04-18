@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { Tag, Pagination } from "antd";
+import { Tag, Pagination, Modal, Input, message } from "antd";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-// 可以在这里导入 ShareModal 如果需要分享功能
-// import ShareModal from "../../components/ShareModal/ShareModal";
 
 interface PhotoItem {
     id: number;
@@ -14,7 +12,6 @@ interface PhotoItem {
     tags?: string[];
 }
 
-// 示例照片数据 (你需要替换成你自己的照片数据)
 const photoList: PhotoItem[] = [
     {
         id: 16,
@@ -132,70 +129,94 @@ const photoList: PhotoItem[] = [
 
 const Gallery: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    // 如果需要分享功能，可以添加 state
-    // const [showShareModal, setShowShareModal] = useState<boolean>(false);
-    // const currentUrl = window.location.href;
+    const [isModalVisible, setIsModalVisible] = useState(true);
+    const [answer, setAnswer] = useState("");
+    const [isAuthorized, setIsAuthorized] = useState(false);
 
-    const itemsPerPage = 9; // 每页显示的照片数量
+    const itemsPerPage = 9;
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const displayedPhotos = photoList.slice(startIndex, endIndex);
 
+    const handleVerify = () => {
+        if (answer.toLowerCase() === "wyds") {
+            setIsAuthorized(true);
+            setIsModalVisible(false);
+            message.success("验证成功，欢迎查看照片！");
+        } else {
+            message.error("答案错误，请重试");
+        }
+    };
+
     return (
         <div className="min-h-screen bg-gray-50">
-            {/* 确保 Header 组件支持 'gallery' 或类似的 currentPage 值 */}
             <Header currentPage="gallery" />
-            <div className="pt-16 max-w-7xl mx-auto px-4 py-8 min-h-[600px]"> {/* 调整最小高度 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-                    {displayedPhotos.map((photo) => (
-                        <div
-                            key={photo.id}
-                            className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 group"
-                        >
-                            <div className="relative h-64 w-full"> {/* 固定高度和宽度 */}
-                                <img
-                                    src={photo.imageUrl}
-                                    alt={photo.title}
-                                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                    style={{ objectPosition: 'center' }}
-                                />
-                                {/* 可以添加悬停效果，例如显示标题 */}
-                                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity duration-300 flex items-end p-4">
-                                    <h3 className="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">{photo.title}</h3>
+            <Modal
+                title="请回答问题以查看照片"
+                open={isModalVisible}
+                onOk={handleVerify}
+                onCancel={() => window.history.back()}
+                closable={false}
+                maskClosable={false}
+            >
+                <p className="mb-4">问题：nzhs</p>
+                <Input
+                    placeholder="请输入答案"
+                    value={answer}
+                    onChange={(e) => setAnswer(e.target.value)}
+                    onPressEnter={handleVerify}
+                />
+            </Modal>
+
+            {isAuthorized ? (
+                <div className="pt-16 max-w-7xl mx-auto px-4 py-8 min-h-[600px]">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+                        {displayedPhotos.map((photo) => (
+                            <div
+                                key={photo.id}
+                                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 group"
+                            >
+                                <div className="relative h-64 w-full">
+                                    <img
+                                        src={photo.imageUrl}
+                                        alt={photo.title}
+                                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        style={{ objectPosition: 'center' }}
+                                    />
+                                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity duration-300 flex items-end p-4">
+                                        <h3 className="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            {photo.title}
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div className="p-4">
+                                    <p className="text-sm text-gray-500 mb-2">{photo.date}</p>
+                                    <p className="text-gray-700 mb-3">{photo.description}</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {photo.tags?.map((tag, index) => (
+                                            <Tag key={index} color="blue">{tag}</Tag>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                            <div className="p-4">
-                                <p className="text-sm text-gray-500 mb-2">{photo.date}</p>
-                                <p className="text-gray-700 mb-3">{photo.description}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {photo.tags?.map((tag, index) => (
-                                        <Tag key={index} color="blue">{tag}</Tag>
-                                    ))}
-                                </div>
-                                {/* 如果需要，可以添加喜欢、分享按钮 */}
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
+                    <div className="mt-12 flex justify-center">
+                        <Pagination
+                            current={currentPage}
+                            total={photoList.length}
+                            pageSize={itemsPerPage}
+                            onChange={(page) => setCurrentPage(page)}
+                            className="!rounded-full"
+                        />
+                    </div>
                 </div>
-                {/* 分页 */}
-                <div className="mt-12 flex justify-center">
-                    <Pagination
-                        current={currentPage}
-                        total={photoList.length}
-                        pageSize={itemsPerPage}
-                        onChange={(page) => setCurrentPage(page)}
-                        className="!rounded-full"
-                    />
+            ) : (
+                <div className="pt-16 max-w-7xl mx-auto px-4 py-8 text-center text-gray-500">
+                    请先完成验证
                 </div>
-            </div>
+            )}
             <Footer />
-            {/* 如果需要分享功能，可以添加 ShareModal */}
-            {/* <ShareModal 
-        isVisible={showShareModal}
-        onClose={() => setShowShareModal(false)}
-        url={currentUrl} // 或者特定照片的 URL
-        title={"分享照片"}
-      /> */}
         </div>
     );
 };

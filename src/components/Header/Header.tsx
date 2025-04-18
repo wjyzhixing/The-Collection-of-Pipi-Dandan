@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { SearchOutlined, MenuOutlined } from "@ant-design/icons";
 
 interface HeaderProps {
-  currentPage: "home" | "stories" | "poems" | "music" | "gallery"; // 添加 'gallery'
+  currentPage: "home" | "stories" | "poems" | "music" | "gallery" | "collection";
 }
 
 const Header: React.FC<HeaderProps> = ({ currentPage }) => {
@@ -56,6 +56,12 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
             >
               照片集
             </Link>
+            <Link
+              to="/collection"
+              className={`!rounded-button ${currentPage === "collection" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"}`}
+            >
+              屁屁蛋蛋集合本
+            </Link>
           </div>
         </div>
 
@@ -75,15 +81,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
         }`}
       >
         <div className="px-4 py-2 flex flex-col space-y-4">
-          <Link
-            to="/"
-            className={`py-2 ${
-              currentPage === "home" ? "text-purple-600" : "text-gray-600"
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            首页
-          </Link>
           <Link
             to="/stories"
             className={`py-2 ${
@@ -119,6 +116,15 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
             onClick={() => setIsMenuOpen(false)}
           >
             照片集
+          </Link>
+          <Link
+            to="/collection"
+            className={`py-2 ${
+              currentPage === "collection" ? "text-purple-600" : "text-gray-600"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            屁屁蛋蛋集合本
           </Link>
         </div>
       </div>

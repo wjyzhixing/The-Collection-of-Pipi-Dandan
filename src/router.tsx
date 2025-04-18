@@ -6,6 +6,7 @@ import StoryDetails from "./pages/StoryDetails/StoryDetails";
 import PoemDetails from "./pages/PoemDetails/PoemDetails";
 import Music from "./pages/Music/Music";
 import Gallery from "./pages/Gallery/Gallery";
+import Collection from "./pages/Collection/Collection";
 
 export const router = createBrowserRouter([
   {
@@ -13,27 +14,31 @@ export const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/stories",
+    path: "stories",
     element: <StoryCollection />,
   },
   {
-    path: "/stories/:id",
+    path: "stories/:id",
     element: <StoryDetails />,
   },
   {
-    path: "/poems",
+    path: "poems",
     element: <Poem />,
   },
   {
-    path: "/poems/:id",
+    path: "poems/:id",
     element: <PoemDetails />,
   },
   {
-    path: "/music",
+    path: "music",
     element: <Music />,
   },
   {
-    path: "/gallery",
+    path: "gallery",
     element: <Gallery />,
   },
+  {
+    path: "collection",
+    element: <Collection />,
+  }
 ]);
