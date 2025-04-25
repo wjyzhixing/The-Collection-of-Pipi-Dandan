@@ -7,6 +7,7 @@ import PoemDetails from "./pages/PoemDetails/PoemDetails";
 import Music from "./pages/Music/Music";
 import Gallery from "./pages/Gallery/Gallery";
 import Collection from "./pages/Collection/Collection";
+import Notices from "./pages/Notices/Notices";
 
 export const router = createBrowserRouter([
   {
@@ -40,5 +41,9 @@ export const router = createBrowserRouter([
   {
     path: "collection",
     element: <Collection />,
-  }
+  },
+  {
+    path: "/notices",
+    element: <Notices />,
+  },
 ]);

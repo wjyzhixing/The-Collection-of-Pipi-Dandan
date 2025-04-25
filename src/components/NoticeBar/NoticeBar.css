@@ -1,0 +1,30 @@
+.notice-bar {
+  width: 100%;
+  overflow: hidden;
+  background: #fffbe6;
+  border-bottom: 1px solid #ffe58f;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.notice-bar-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 15s linear infinite;
+}
+
+.notice-item {
+  margin-right: 40px;
+  font-size: 16px;
+  color: #ad6800;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

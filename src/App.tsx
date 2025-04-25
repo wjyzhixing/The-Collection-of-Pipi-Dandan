@@ -19,6 +19,7 @@ import { cover } from './utils';
 import 杰克与露西 from './assets/杰克与露西.png'
 import 太阳与月亮 from './assets/太阳与月亮.png'
 import 奇幻旋律 from './assets/奇幻旋律.png'
+import NoticeBar from "./components/NoticeBar/NoticeBar";
 
 const App: React.FC = () => {
   const [isShareModalVisible, setIsShareModalVisible] = useState(false);
@@ -56,6 +57,13 @@ const App: React.FC = () => {
         )}
       </button>
       <Header currentPage="home" />
+      {/* <div style={{ marginTop: 64 }}>
+        <NoticeBar notices={[
+          "欢迎来到皮皮蛋蛋的故事集！",
+          "每周持续更新诗歌与故事，敬请关注～",
+          "喜欢请分享给你的朋友吧！"
+        ]} />
+      </div> */}
       {/* Hero区域 */}
       <div className="pt-16">
         <div
@@ -199,6 +207,7 @@ const App: React.FC = () => {
         isVisible={isShareModalVisible}
         onClose={() => setIsShareModalVisible(false)}
         url={currentShareUrl}
+        title={""}
       />
       <Footer />
     </div>

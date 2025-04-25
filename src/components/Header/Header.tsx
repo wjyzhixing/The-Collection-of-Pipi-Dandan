@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
               音乐集
             </Link>
             <Link
-              to="/gallery" // 添加照片集链接
+              to="/gallery"
               className={`!rounded-button ${currentPage === "gallery" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"}`}
             >
               照片集
@@ -61,6 +61,12 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
               className={`!rounded-button ${currentPage === "collection" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"}`}
             >
               屁屁蛋蛋集合本
+            </Link>
+            <Link
+              to="/notices"
+              className={`!rounded-button ${currentPage === "notices" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"}`}
+            >
+              公告栏
             </Link>
           </div>
         </div>
