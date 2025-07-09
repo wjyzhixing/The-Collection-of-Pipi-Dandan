@@ -14,6 +14,30 @@ interface PhotoItem {
 
 const photoList: PhotoItem[] = [
     {
+        id: 20,
+        title: "西站！",
+        description: "西站！",
+        imageUrl: "/love/西站3.jpg",
+        date: "2025-04-08",
+        tags: ["旅游", "西站"],
+    },
+    {
+        id: 19,
+        title: "西站！",
+        description: "西站！",
+        imageUrl: "/love/西站2.jpg",
+        date: "2025-04-08",
+        tags: ["旅游", "西站"],
+    },
+    {
+        id: 18,
+        title: "西站！",
+        description: "西站！",
+        imageUrl: "/love/西站1.jpg",
+        date: "2025-04-08",
+        tags: ["旅游", "西站"],
+    },
+    {
         id: 16,
         title: "济南的我！",
         description: "济南旅游！",
