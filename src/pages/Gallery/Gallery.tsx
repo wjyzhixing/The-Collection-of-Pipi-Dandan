@@ -156,6 +156,8 @@ const Gallery: React.FC = () => {
     const [isModalVisible, setIsModalVisible] = useState(true);
     const [answer, setAnswer] = useState("");
     const [isAuthorized, setIsAuthorized] = useState(false);
+    const [previewVisible, setPreviewVisible] = useState(false);
+    const [previewImage, setPreviewImage] = useState<string | null>(null);
 
     const itemsPerPage = 9;
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -199,6 +201,8 @@ const Gallery: React.FC = () => {
                             <div
                                 key={photo.id}
                                 className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 group"
+                                onClick={() => { setPreviewImage(photo.imageUrl); setPreviewVisible(true); }}
+                                style={{ cursor: 'pointer' }}
                             >
                                 <div className="relative h-64 w-full">
                                     <img
@@ -234,6 +238,22 @@ const Gallery: React.FC = () => {
                             className="!rounded-full"
                         />
                     </div>
+                    <Modal
+                        open={previewVisible}
+                        footer={null}
+                        onCancel={() => setPreviewVisible(false)}
+                        centered
+                        width={800}
+                        bodyStyle={{ padding: 0, background: '#000' }}
+                    >
+                        {previewImage && (
+                            <img
+                                src={previewImage}
+                                alt="预览大图"
+                                style={{ width: '100%', maxHeight: '80vh', objectFit: 'contain', background: '#000' }}
+                            />
+                        )}
+                    </Modal>
                 </div>
             ) : (
                 <div className="pt-16 max-w-7xl mx-auto px-4 py-8 text-center text-gray-500">
