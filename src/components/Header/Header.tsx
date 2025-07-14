@@ -62,6 +62,12 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
             >
               屁屁蛋蛋集合本
             </Link>
+            <a
+              href="https://tarot-ppdd.netlify.app"
+              className={`!rounded-button ${currentPage === "tarot" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"}`}
+            >
+              塔罗牌测试
+            </a>
             <Link
               to="/notices"
               className={`!rounded-button ${currentPage === "notices" ? "text-purple-600" : "text-gray-600 hover:text-purple-600"}`}
@@ -132,6 +138,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
           >
             屁屁蛋蛋集合本
           </Link>
+          <a
+              href="https://tarot-ppdd.netlify.app"
+              className={`py-2 ${
+              currentPage === "tarot" ? "text-purple-600" : "text-gray-600"
+            }`}
+            >
+              塔罗牌测试
+          </a>
         </div>
       </div>
     </nav>
